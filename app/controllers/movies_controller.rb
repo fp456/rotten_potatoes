@@ -15,15 +15,15 @@ class MoviesController < ApplicationController
       end
 
       if session[:sort]:
-        @movies = session[:sort]
+        params[:sort] = session[:sort]
       end
 
       if session[:sorted_title]:
-        @movies = session[:sorted_title]
+        params[:sorted_title] = session[:sorted_title]
       end
 
       if session[:sorted_date]:
-        @movies = session[:sorted_date]
+        params[:sorted_date] = session[:sorted_date]
       end
 
       if @ratings_to_show.nil?
