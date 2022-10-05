@@ -9,9 +9,14 @@ class MoviesController < ApplicationController
     def index
       @all_ratings = Movie.return_ratings
       @ratings_to_show = Movie.checked_ratings(params[:ratings])
-      @movie = Movie.with_ratings(@ratings_to_show)
+      if @ratings_to_show
+        @movie = @movie.select{ |movie| params[:ratings].include? movie.rating}
+      else
+        @movie = Movie.all
+      end
     end
   
+    
     def new
       # default: render 'new' template
     end
