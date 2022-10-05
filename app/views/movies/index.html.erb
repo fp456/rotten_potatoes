@@ -16,9 +16,9 @@
 <table class="table table-striped col-md-12" id="movies">
   <thead>
     <tr>
-      <%= link_to "Movie Title", movies_path(:sort => "title_sort"), :id => "title_header" %>
+      <th> <%= link_to "Movie Title", movies_path(:sort => "title_sort"), :id => "title_header" %> </th>
       <th>Rating</th>
-      <ta id="release_date_header"> <th> Release Date </th> </ta>
+      <th id="release_date_header"> <th> Release Date </th> </th>
       <th>More Info</th>
     </tr>
   </thead>
