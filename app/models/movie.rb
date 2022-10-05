@@ -9,6 +9,7 @@ class Movie < ActiveRecord::Base
       []
     else
       keys
+    end
   end
 
   def self.with_ratings ratings
@@ -16,6 +17,7 @@ class Movie < ActiveRecord::Base
       Movie.all
     else
       Movie.where("rating = 'G'")
+    end
   end
 
 end
