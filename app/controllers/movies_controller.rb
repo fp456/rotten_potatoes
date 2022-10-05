@@ -9,12 +9,11 @@ class MoviesController < ApplicationController
 
       if session[:ratings_to_show]
         @ratings_to_show = session[:ratings_to_show]
+      else
+        @movies = Movie.all
+        @all_ratings = Movie.return_ratings
+        @ratings_to_show = Movie.checked_ratings(params[:ratings])
       end
-
-      @movies = Movie.all
-      @all_ratings = Movie.return_ratings
-      @ratings_to_show = Movie.checked_ratings(params[:ratings])
-      session[:ratings_to_show] = @ratings_to_show
       
       if @ratings_to_show.nil?
         @movies = Movie.all
@@ -22,17 +21,15 @@ class MoviesController < ApplicationController
         @movies = Movie.where('rating IN (?)', @ratings_to_show)
       end
 
+      session[:ratings_to_show] = @ratings_to_show
+
       if params[:sort]
         if params[:sort] == "title_sort"
-          session[:sort] = "title_sort"
           @movies = @movies.order(:title)
           params[:sorted_title] = "1"
-          session[:sorted_title] = "1"
         elsif params[:sort] == "date_sort"
-          session[:sort] = "date_sort"
           @movies = @movies.order(:release_date)
           params[:sorted_date] = "1"
-          session[:sorted_date] = "1"
         else
         end
       end
