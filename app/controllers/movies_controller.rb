@@ -13,9 +13,8 @@ class MoviesController < ApplicationController
       if @ratings_to_show.nil?
         @movies = Movie.all
       else
-        @movies = Movie.where("rating = 'G'")
+        @movies = Movie.where('rating IN (?)', @ratings_to_show)
       end
-
     end
   
     def new
