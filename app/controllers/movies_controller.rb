@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
       @all_ratings = Movie.return_ratings
       @ratings_to_show = Movie.checked_ratings(params[:ratings])
       if @ratings_to_show
-        @movie = @movie.select{ |movie| params[:ratings].include? movie.rating}
+        @movie = Movie.where("rating = 'G'")
       else
         @movie = Movie.all
       end
