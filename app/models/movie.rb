@@ -15,7 +15,7 @@ class Movie < ActiveRecord::Base
     if ratings.empty?
       Movie.all
     else
-      Movie.where( "rating" => "G")
+      Movie.where("rating = 'G'")
   end
 
 end
