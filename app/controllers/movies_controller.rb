@@ -1,7 +1,4 @@
 class MoviesController < ApplicationController
-
-    @movie = Movie.all
-
     def show
       id = params[:id] # retrieve movie ID from URI route
       @movie = Movie.find(id) # look up movie by unique ID
@@ -9,12 +6,13 @@ class MoviesController < ApplicationController
     end
   
     def index
+      @movie = Movie.all
       @all_ratings = Movie.return_ratings
       @ratings_to_show = Movie.checked_ratings(params[:ratings])
-      if @ratings_to_show
-        @movie = Movie.where("rating = 'G'")
-      else
+      if @ratings_to_show.empty?
         @movie = Movie.all
+      else
+        @movie = Movie.where("rating = 'G'")
       end
     end
   
