@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
       unless params[:ratings].nil?
         @ratings_to_show = Movie.checked_ratings(params[:ratings])
         session[:ratings_to_show] = @ratings_to_show
+      end
       
       if params[:ratings].nil? && session[:ratings_to_show]
         @ratings_to_show = session[:ratings_to_show]
