@@ -10,13 +10,4 @@ class Movie < ActiveRecord::Base
       params.keys
     end
   end
-
-  def self.with_ratings(ratings)
-    if ratings.empty?
-      Movie.all
-    else
-      Movie.where("rating = 'G'")
-    end
-  end
-
 end
