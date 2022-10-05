@@ -4,7 +4,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.checked_ratings(params)
-    if params.empty?
+    if params.nil?
       []
     else
       params.keys
