@@ -9,6 +9,13 @@ class MoviesController < ApplicationController
       @movies = Movie.all
       @all_ratings = Movie.return_ratings
       @ratings_to_show = Movie.checked_ratings(params[:ratings])
+
+      if @ratings_to_show.nil?
+        @movies = Movie.all
+      else
+        @movies = Movie.where("rating = 'G'")
+      end
+
     end
   
     def new
