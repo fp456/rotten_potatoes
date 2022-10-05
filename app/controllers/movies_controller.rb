@@ -15,6 +15,15 @@ class MoviesController < ApplicationController
       else
         @movies = Movie.where('rating IN (?)', @ratings_to_show)
       end
+
+      if params[:sort]
+        if params[:sort] == "title_sort"
+          @movies = @movies.sort! { |a,b| a.title <=> b.title }
+        #elsif params[:sort] == 'date_sort'
+         # @movies = @movies.sort! { |a,b| a.release_date <=> b.release_date }
+        #else
+        end
+      end
     end
   
     def new
