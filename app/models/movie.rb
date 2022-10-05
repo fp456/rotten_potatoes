@@ -3,7 +3,7 @@ class Movie < ActiveRecord::Base
     ['G','PG','PG-13','R']
   end
 
-  def self.checked_ratings params
+  def self.checked_ratings(params)
     keys = params.keys
     if keys.empty?
       []
@@ -12,7 +12,7 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  def self.with_ratings ratings
+  def self.with_ratings(ratings)
     if ratings.empty?
       Movie.all
     else
