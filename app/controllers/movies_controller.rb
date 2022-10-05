@@ -19,9 +19,9 @@ class MoviesController < ApplicationController
       if params[:sort]
         if params[:sort] == "title_sort"
           @movies = @movies.order(:title)
-        #elsif params[:sort] == 'date_sort'
-         # @movies = @movies.sort! { |a,b| a.release_date <=> b.release_date }
-        #else
+        elsif params[:sort] == "date_sort"
+          @movies = @movies.order(:release_date)
+        else
         end
       end
     end
