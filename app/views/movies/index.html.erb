@@ -20,7 +20,7 @@
         <%=link_to "Movie Title", movies_path(:sort => "title_sort"), :id => "title_header", class:'hilite'%>  
       </th>
       <th>Rating</th>
-      <th class="<%= 'p-3 mb-2 bg-warning' if params[:sorted_date] ==  %>"> 
+      <th class="<%= 'p-3 mb-2 bg-warning' if params[:sorted_date] == "1"  %>"> 
         <%= link_to "Release Date", movies_path(:sort => "date_sort"), :id => "release_date_header", class:'hilite'%> 
       </th>
       <th>More Info</th>
