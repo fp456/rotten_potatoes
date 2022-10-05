@@ -16,7 +16,7 @@
 <table class="table table-striped col-md-12" id="movies">
   <thead>
     <tr>
-      <%= {params[:sort] == "title" ? {:class => "hilite"} : {}}= link_to "Movie Title", movies_path(:sort => "title_sort"), :id => "title_header" %>
+      <%= link_to "Movie Title", movies_path(:sort => "title_sort") %>
       <th>Rating</th>
       <ta id="release_date_header"> <th> Release Date </th> </ta>
       <th>More Info</th>
