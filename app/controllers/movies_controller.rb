@@ -6,22 +6,29 @@ class MoviesController < ApplicationController
     end
   
     def index
+      @all_ratings = Movie.return_ratings
+      @movies = Movie.all
 
-      if session[:ratings_to_show]
-        @ratings_to_show = session[:ratings_to_show]
-      else
-        @movies = Movie.all
-        @all_ratings = Movie.return_ratings
+      unless params[:ratings].nil?
         @ratings_to_show = Movie.checked_ratings(params[:ratings])
-      end
+        session[:ratings_to_show] = @ratings_to_show
       
+      if params[:ratings].nil? && session[:ratings_to_show]
+        @ratings_to_show = session[:ratings_to_show]
+      end
+
       if @ratings_to_show.nil?
         @movies = Movie.all
       else
         @movies = Movie.where('rating IN (?)', @ratings_to_show)
       end
 
-      session[:ratings_to_show] = @ratings_to_show
+      if params[:sort]
+        session[:sort] = params[:sort]
+      elsif session[:sort]
+        params[:sort] = session[:sort]
+      else
+      end
 
       if params[:sort]
         if params[:sort] == "title_sort"
@@ -32,6 +39,7 @@ class MoviesController < ApplicationController
           params[:sorted_date] = "1"
         else
         end
+        session[:sort] = params[:sort]
       end
     end
   
