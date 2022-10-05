@@ -10,19 +10,19 @@ class MoviesController < ApplicationController
       @all_ratings = Movie.return_ratings
       @ratings_to_show = Movie.checked_ratings(params[:ratings])
 
-      if session[:filtered]:
+      if session[:filtered]
         @movies = session[:filtered]
       end
 
-      if session[:sort]:
+      if session[:sort]
         params[:sort] = session[:sort]
       end
 
-      if session[:sorted_title]:
+      if session[:sorted_title]
         params[:sorted_title] = session[:sorted_title]
       end
 
-      if session[:sorted_date]:
+      if session[:sorted_date]
         params[:sorted_date] = session[:sorted_date]
       end
 
@@ -46,9 +46,6 @@ class MoviesController < ApplicationController
         else
         end
       end
-
-      session[:filtered] = @movies
-
     end
   
     def new
