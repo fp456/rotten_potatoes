@@ -7,9 +7,9 @@ class MoviesController < ApplicationController
     end
   
     def index
-      @movies = Movie.all
       @all_ratings = Movie.return_ratings
       @ratings_to_show = Movie.checked_ratings params[:ratings]
+      @movie = Movie.with_ratings(:ratings)
     end
   
     def new
