@@ -14,8 +14,8 @@ class MoviesController < ApplicationController
       @movies = Movie.all
       @all_ratings = Movie.return_ratings
       @ratings_to_show = Movie.checked_ratings(params[:ratings])
+      session[:ratings_to_show] = @ratings_to_show
       
-
       if @ratings_to_show.nil?
         @movies = Movie.all
       else
