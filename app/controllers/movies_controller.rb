@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
       if @ratings_to_show.empty?
         @movie = Movie.all
       else
-        @movie = Movie.where("rating = 'G'")
+        @movie = Movie.all
       end
     end
   
