@@ -3,7 +3,7 @@ class Movie < ActiveRecord::Base
     ['G','PG','PG-13','R']
   end
 
-  def self.checked_ratings ratings:
+  def self.checked_ratings(ratings)
     if ratings.empty?
       ['G','PG','PG-13','R']
     else
