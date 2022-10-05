@@ -1,4 +1,7 @@
 class MoviesController < ApplicationController
+
+    @movies = Movie.all
+
     def show
       id = params[:id] # retrieve movie ID from URI route
       @movie = Movie.find(id) # look up movie by unique ID
@@ -11,7 +14,6 @@ class MoviesController < ApplicationController
       @ratings_to_show = ['G','PG','PG-13','R']
     end
   
-    
     def new
       # default: render 'new' template
     end
